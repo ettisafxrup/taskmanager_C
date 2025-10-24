@@ -56,9 +56,9 @@ void registerUser()
     char username[50], password[50];
     FILE *fp = fopen(USERS_FILE, "a+");
 
-    printf("\nChoose a username: ");
+    printf("\nUsername: ");
     scanf("%s", username);
-    printf("Choose a password: ");
+    printf("Password: ");
     scanf("%s", password);
 
     fprintf(fp, "%s %s\n", username, password);

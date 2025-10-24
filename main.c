@@ -4,6 +4,7 @@
 #include <direct.h>
 #include "./controller/auth/auth.h"
 #include "./utils/utils.h"
+#include "./controller/todo/todo.h"
 
 void mainMenu(const char *username);
 
@@ -30,6 +31,7 @@ int main()
         case 1:
             if (loginUser(username))
             {
+
                 mainMenu(username);
             }
             break;
@@ -69,8 +71,8 @@ void mainMenu(const char *username)
         switch (choice)
         {
         case 1:
-            printf("To-Do feature coming soon!\n");
-            pauseScreen();
+            showTodoMenu(username);
+            // pauseScreen();
             break;
         case 2:
             printf("Budget Tracker coming soon!\n");

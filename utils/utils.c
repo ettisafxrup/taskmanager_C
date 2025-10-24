@@ -10,9 +10,9 @@ void clearScreen()
 
 void pauseScreen()
 {
+    clearScreen();
     printf("\nPress Enter to continue...");
     getchar();
-    clearScreen();
 }
 
 void showProgressBar(int percent)
