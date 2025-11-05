@@ -82,11 +82,11 @@ void viewTasks(const char *username)
         return;
     }
 
-    printf("\n\t Today's Tasks :\n");
+    printf("\nToday's Tasks :\n");
     for (int i = 0; i < count; i++)
     {
-        printf("[%d] %s %s\n", i + 1, tasks[i].description,
-               tasks[i].completed ? "(✓ Completed)" : "(Pending)");
+        printf("\t [%d] %s %s\n", i + 1, tasks[i].description,
+               tasks[i].completed ? "(Completed)" : "(Pending)");
     }
 }
 
@@ -224,13 +224,13 @@ void showTodoMenu(const char *username)
         clearScreen();
         viewTasks(username);
         printf("\n===== TODO MENU =====\n");
-        printf("1. Add Task\n");
-        printf("2. Edit Task\n");
-        printf("3. Mark Task as Completed\n");
-        printf("4. Delete Task\n");
-        printf("5. Exit to Main Menu\n");
+        printf("\t1. Add Task\n");
+        printf("\t2. Edit Task\n");
+        printf("\t3. Mark Task as Completed\n");
+        printf("\t4. Delete Task\n");
+        printf("\t5. Exit to Main Menu\n\n");
         printf("======================\n");
-        printf("Enter your choice: ");
+        printf("\t>> ");
         scanf("%d", &choice);
 
         clearScreen();

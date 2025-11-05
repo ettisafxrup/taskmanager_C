@@ -17,12 +17,12 @@ int main()
 
     while (1)
     {
-        printf("=== Personal Task & Finance Manager ===\n");
-        printf("1. Login\n");
-        printf("2. Register\n");
-        printf("3. Exit\n");
+        printf("===== Personal Task & Finance Manager =====\n\n");
+        printf("\t1. Login\n");
+        printf("\t2. Register\n");
+        printf("\t3. Exit\n\n");
         printf("--------------------------------------\n");
-        printf(">> ");
+        printf("\t>> ");
         scanf("%d", &choice);
         getchar();
 
@@ -30,16 +30,14 @@ int main()
         {
         case 1:
             if (loginUser(username))
-            {
-
                 mainMenu(username);
-            }
             break;
         case 2:
             registerUser();
             break;
         case 3:
-            printf("Exiting...\n");
+            printf("Exiting Task Manager, Thank you for using our application...\n");
+            printf("\t2407109, 2407093, 2407101\n");
             exit(0);
         default:
             printf("Invalid choice!\n");
@@ -57,12 +55,10 @@ void mainMenu(const char *username)
     while (1)
     {
         clearScreen();
-        printf("=== Welcome, %s ===\n", username);
-        printf("1. To-Do Task Manager\n");
-        printf("2. Monthly Budget Tracker\n");
-        printf("3. Bank Balance Control\n");
-        printf("4. Weight Tracker\n");
-        printf("5. Logout\n");
+        printf("===== Welcome, %s =====\n\n", username);
+        printf("\t1. To-Do Task Manager\n");
+        printf("\t2. Bank Balance\n");
+        printf("\t3. Logout\n\n");
         printf("----------------------------\n");
         printf(">> ");
         scanf("%d", &choice);
@@ -72,21 +68,12 @@ void mainMenu(const char *username)
         {
         case 1:
             showTodoMenu(username);
-            // pauseScreen();
             break;
         case 2:
-            printf("Budget Tracker coming soon!\n");
+            printf("Bank Balance!\n");
             pauseScreen();
             break;
         case 3:
-            printf("Bank Control coming soon!\n");
-            pauseScreen();
-            break;
-        case 4:
-            printf("Health Tracker coming soon!\n");
-            pauseScreen();
-            break;
-        case 5:
             clearScreen();
             printf("\t Logged out successfully!\n");
             pauseScreen();
