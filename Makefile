@@ -14,6 +14,9 @@ taskie: $(OBJS)
 	clear
 	@echo Taskie was built successfully!
 
+# $@ -> Current Target
+# $< -> First dependency
+
 ${OBJ_DIR}/%.o: %.c
 	@mkdir -p $(dir $@)
 	gcc -c $< -o $@
@@ -21,4 +24,4 @@ ${OBJ_DIR}/%.o: %.c
 clean:
 	rm -rf ${OBJ_DIR} *.exe
 	clear
-	@echo Everything was cleaned from the directory!
+	@echo ./build and taskie.exe was cleaned from the directory!

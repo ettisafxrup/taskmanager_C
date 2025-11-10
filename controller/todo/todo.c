@@ -5,7 +5,7 @@
 #include "../../utils/utils.h"
 #include "todo.h"
 
-void getTaskFilePath(const char *username, char *path)
+void taskFilePath(const char *username, char *path)
 {
     sprintf(path, "data/%s/tasks.txt", username);
 }
@@ -13,9 +13,10 @@ void getTaskFilePath(const char *username, char *path)
 int loadTasks(const char *username, Task tasks[])
 {
     char path[200];
-    getTaskFilePath(username, path);
+    taskFilePath(username, path);
 
     FILE *fp = fopen(path, "r");
+
     if (!fp)
         return 0;
 
@@ -32,7 +33,7 @@ int loadTasks(const char *username, Task tasks[])
 void saveTasks(const char *username, Task tasks[], int count)
 {
     char path[200];
-    getTaskFilePath(username, path);
+    taskFilePath(username, path);
 
     FILE *fp = fopen(path, "w");
     if (!fp)
@@ -61,9 +62,9 @@ void addTask(const char *username)
     }
 
     printf("Enter new task: ");
-    getchar(); // clear newline
+    getchar();
     fgets(tasks[count].description, MAX_TASK_LEN, stdin);
-    tasks[count].description[strcspn(tasks[count].description, "\n")] = '\0';
+    tasks[count].description[strlen(tasks[count].description) - 1] = '\0';
     tasks[count].completed = 0;
     count++;
 
@@ -112,10 +113,10 @@ void editTask(const char *username)
         return;
     }
 
-    getchar(); // clear newline
+    getchar();
     printf("Enter new description: ");
     fgets(tasks[num - 1].description, MAX_TASK_LEN, stdin);
-    tasks[num - 1].description[strcspn(tasks[num - 1].description, "\n")] = '\0';
+    tasks[num - 1].description[strlen(tasks[count].description) - 1] = '\0';
 
     saveTasks(username, tasks, count);
     printf("Task updated successfully!\n");
@@ -147,7 +148,6 @@ void markTaskCompleted(const char *username)
     saveTasks(username, tasks, count);
     printf("Task marked as completed!\n");
 
-    // Check if all tasks completed
     int allDone = 1;
     for (int i = 0; i < count; i++)
     {
@@ -160,8 +160,8 @@ void markTaskCompleted(const char *username)
 
     if (allDone)
     {
-        printf("\n🎉 All tasks completed! Great job!\n");
-        printf("Do you want to reset and add new tasks? (y/n): ");
+        printf("\nHurrayyy! All tasks completed! Great job!\n");
+        printf("\tDo you want to reset and add new tasks? (y/n): ");
         char choice;
         getchar();
         scanf("%c", &choice);
@@ -209,7 +209,7 @@ void deleteTask(const char *username)
 void resetTasks(const char *username)
 {
     char path[200];
-    getTaskFilePath(username, path);
+    taskFilePath(username, path);
     FILE *fp = fopen(path, "w");
     if (fp)
         fclose(fp);

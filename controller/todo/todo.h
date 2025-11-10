@@ -1,8 +1,8 @@
 #ifndef TODO_H
 #define TODO_H
 
-#define MAX_TASK_LEN 200
-#define MAX_TASKS 100
+#define MAX_TASK_LEN 60
+#define MAX_TASKS 15
 
 typedef struct
 {

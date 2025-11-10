@@ -1,9 +1,6 @@
 📁 Application Structure:
 
 .
-├── 📂 cmp
-│   ├── compile.bat
-│   ├── compile.sh
 ├── 📂 controller
 │   ├── 📂 auth
 │   │   ├── auth.c
@@ -16,8 +13,9 @@
 │   │   ├── tasks.txt
 │   ├── users.txt
 ├── main.c
+├── Makefile
 ├── README.md
-├── task_manager.exe
+├── taskie.exe
 ├── 📂 utils
 │   ├── utils.c
 │   ├── utils.h
