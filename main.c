@@ -6,38 +6,45 @@
 #include "./utils/utils.h"
 #include "./controller/todo/todo.h"
 
+enum
+{
+    LOGIN = 1,
+    REGISTER,
+    EXIT
+};
+
 void mainMenu(const char *username);
 
 int main()
 {
-    mkdir("data");
 
     int choice;
     char username[50];
 
     while (1)
     {
-        printf("===== Personal Task & Finance Manager =====\n\n");
+        printf("===== University Project - Taskie =====\n\n");
+        printf(">> 2407093 2407101 2407109 <<\n\n");
         printf("\t1. Login\n");
         printf("\t2. Register\n");
         printf("\t3. Exit\n\n");
-        printf("--------------------------------------\n");
+
         printf("\t>> ");
         scanf("%d", &choice);
         getchar();
 
         switch (choice)
         {
-        case 1:
+        case LOGIN:
             if (loginUser(username))
                 mainMenu(username);
             break;
-        case 2:
+        case REGISTER:
             registerUser();
             break;
-        case 3:
-            printf("Exiting Task Manager, Thank you for using our application...\n");
-            printf("\t2407109, 2407093, 2407101\n");
+        case EXIT:
+            printf("Exiting Taskie, Thank you for using our application...\n");
+            printf("\t >> 2407093, 2407109,2407101 << \n");
             exit(0);
         default:
             printf("Invalid choice!\n");
@@ -59,7 +66,7 @@ void mainMenu(const char *username)
         printf("\t1. To-Do Task Manager\n");
         printf("\t2. Bank Balance\n");
         printf("\t3. Logout\n\n");
-        printf("----------------------------\n");
+
         printf(">> ");
         scanf("%d", &choice);
         getchar();

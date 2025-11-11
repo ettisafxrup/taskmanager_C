@@ -14,12 +14,13 @@ taskie: $(OBJS)
 	clear
 	@echo Taskie was built successfully!
 
-# $@ -> Current Target
-# $< -> First dependency
+# $@ -> Current Target (%.o)
+# $< -> First dependency (.%c)
 
 ${OBJ_DIR}/%.o: %.c
 	@mkdir -p $(dir $@)
 	gcc -c $< -o $@
+
 
 clean:
 	rm -rf ${OBJ_DIR} *.exe
