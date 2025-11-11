@@ -1,28 +1,28 @@
 SRC_DIRS = . controller/auth controller/todo utils
-OBJ_DIR = build
+OBJECT_FOLDER = build
 
-SRCS = $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.c))
-# main.c controller/auth/auth.c controller/todo/todo.c utils/utils.c
+# Source Code - C Files
+CODE_SOURCE = main.c controller/auth/auth.c controller/todo/todo.c utils/utils.c
 
-OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
-# main.o controller/auth/auth.o controller/todo/todo.o utils/utils.o
+# Object Code - Compiled Obj Files
+OBJ_SOURCE = $(OBJECT_FOLDER)/main.o $(OBJECT_FOLDER)/controller/auth/auth.o $(OBJECT_FOLDER)/controller/todo/todo.o $(OBJECT_FOLDER)/utils/utils.o
+
 
 all: taskie
 
-taskie: $(OBJS)
-	gcc $(OBJS) -o taskie.exe
+taskie: $(OBJ_SOURCE)
+	gcc $(OBJ_SOURCE) -o taskie.exe
 	clear
 	@echo Taskie was built successfully!
 
-# $@ -> Current Target (%.o)
-# $< -> First dependency (.%c)
+# $@ -> Object Files | Target | (%.o)
+# $< -> Source Files | Dependencies | (.%c)
 
-${OBJ_DIR}/%.o: %.c
+${OBJECT_FOLDER}/%.o: %.c
 	@mkdir -p $(dir $@)
 	gcc -c $< -o $@
 
-
 clean:
-	rm -rf ${OBJ_DIR} *.exe
+	rm -rf ${OBJECT_FOLDER} *.exe
 	clear
 	@echo ./build and taskie.exe was cleaned from the directory!

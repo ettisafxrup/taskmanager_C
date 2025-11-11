@@ -23,6 +23,7 @@ int main()
 
     while (1)
     {
+        clearScreen();
         printf("===== University Project - Taskie =====\n\n");
         printf(">> 2407093 2407101 2407109 <<\n\n");
         printf("\t1. Login\n");
@@ -43,7 +44,8 @@ int main()
             registerUser();
             break;
         case EXIT:
-            printf("Exiting Taskie, Thank you for using our application...\n");
+            clearScreen();
+            printf("Exiting Taskie, \nThank you for using our Taskie...\n");
             printf("\t >> 2407093, 2407109,2407101 << \n");
             exit(0);
         default:
