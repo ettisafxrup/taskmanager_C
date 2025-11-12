@@ -10,6 +10,6 @@ void clearScreen()
 
 void pauseScreen()
 {
-    printf("Press Enter to Continue:");
+    printf("\nPress Enter to Continue. ");
     getchar();
 }

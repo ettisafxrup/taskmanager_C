@@ -5,6 +5,15 @@
 #include "../../utils/utils.h"
 #include "todo.h"
 
+enum
+{
+    ADD_TASK = 1,
+    EDIT_TASK,
+    MARK_TASK_COMPLETED,
+    DELETE_TASK,
+    EXIT_TO_MAIN_MENU
+};
+
 void taskFilePath(const char *username, char *path)
 {
     sprintf(path, "data/%s/tasks.txt", username);
@@ -116,7 +125,7 @@ void editTask(const char *username)
     getchar();
     printf("Enter new description: ");
     fgets(tasks[num - 1].description, MAX_TASK_LEN, stdin);
-    tasks[num - 1].description[strlen(tasks[count].description) - 1] = '\0';
+    tasks[num - 1].description[strcspn(tasks[num - 1].description, "\n")] = '\0';
 
     saveTasks(username, tasks, count);
     printf("Task updated successfully!\n");
@@ -237,19 +246,19 @@ void showTodoMenu(const char *username)
 
         switch (choice)
         {
-        case 1:
+        case ADD_TASK:
             addTask(username);
             break;
-        case 2:
+        case EDIT_TASK:
             editTask(username);
             break;
-        case 3:
+        case MARK_TASK_COMPLETED:
             markTaskCompleted(username);
             break;
-        case 4:
+        case DELETE_TASK:
             deleteTask(username);
             break;
-        case 5:
+        case EXIT_TO_MAIN_MENU:
             return;
         default:
             printf("Invalid choice!\n");

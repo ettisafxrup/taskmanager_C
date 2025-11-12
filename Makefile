@@ -26,3 +26,6 @@ clean:
 	rm -rf ${OBJECT_FOLDER} *.exe
 	clear
 	@echo ./build and taskie.exe was cleaned from the directory!
+
+run: taskie
+	./taskie.exe

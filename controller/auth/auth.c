@@ -23,9 +23,9 @@ int loginUser(char username[])
         return 0;
     }
 
-    printf("\nUsername: ");
+    printf("\nUsername >> ");
     scanf("%s", inputUser);
-    printf("Password: ");
+    printf("Password >> ");
     scanf("%s", inputPass);
 
     while (fscanf(fp, "%s %s", storedUser, storedPass) != EOF)
@@ -39,15 +39,19 @@ int loginUser(char username[])
             sprintf(path, "data/%s", username);
             mkdir(path, 0777);
 
-            printf("Login successful! Welcome, %s.\n", username);
+            printf("\nLogin successful! \n\t Welcome, %s.\n", username);
             pauseScreen();
+            getchar();
+            clearScreen();
             return 1;
         }
     }
 
     fclose(fp);
+    printf("\nInvalid credentials! Please check your inputs and try again.\n");
+    pauseScreen();
+    getchar();
     clearScreen();
-    printf("Invalid credentials! Please check your inputs and try again.\n");
     return 0;
 }
 
@@ -56,9 +60,9 @@ void registerUser()
     char username[50], password[50];
     FILE *fp = fopen(USERS_FILE, "a+");
 
-    printf("\nUsername: ");
+    printf("\nUsername >> ");
     scanf("%s", username);
-    printf("Password: ");
+    printf("Password >> ");
     scanf("%s", password);
 
     fprintf(fp, "%s %s\n", username, password);
@@ -67,7 +71,8 @@ void registerUser()
     char path[100];
     sprintf(path, "data/%s", username);
     mkdir(path, 0777);
-    clearScreen();
-    printf("Registration successful! You can now login.\n");
+
+    printf("\n\n Registration successful! You can now login.\n");
     pauseScreen();
+    getchar();
 }

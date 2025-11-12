@@ -23,7 +23,6 @@ int main()
 
     while (1)
     {
-        clearScreen();
         printf("===== University Project - Taskie =====\n\n");
         printf(">> 2407093 2407101 2407109 <<\n\n");
         printf("\t1. Login\n");
