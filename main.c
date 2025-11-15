@@ -15,14 +15,21 @@ enum
 
 void mainMenu(const char *username);
 
-int main()
+int main(int argc, int *argv[])
 {
 
     int choice;
-    char username[50];
+    // username using malloc pls
+    char *username = malloc(50);
 
     while (1)
     {
+        if (argv[1] && strcmp(argv[1], "login") == 0)
+        {
+            int returnedValue = argsLogin(argv);
+            if (returnedValue == 1)
+                mainMenu(username);
+        }
         printf("===== University Project - Taskie =====\n\n");
         printf(">> 2407093 2407101 2407109 <<\n\n");
         printf("\t1. Login\n");

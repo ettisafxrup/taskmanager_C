@@ -37,7 +37,6 @@ int loginUser(char username[])
 
             char path[100];
             sprintf(path, "data/%s", username);
-            mkdir(path, 0777);
 
             printf("\nLogin successful! \n\t Welcome, %s.\n", username);
             pauseScreen();
@@ -75,4 +74,34 @@ void registerUser()
     printf("\n\n Registration successful! You can now login.\n");
     pauseScreen();
     getchar();
+}
+
+int argsLogin(char *argv[])
+{
+    char storedUser[50], storedPass[50];
+    char username[50];
+    FILE *fp = fopen("data/users.txt", "r");
+
+    while (fscanf(fp, "%s %s", storedUser, storedPass) != EOF)
+    {
+        if (strcmp(storedUser, argv[2]) == 0 && strcmp(storedPass, argv[3]) == 0)
+        {
+            fclose(fp);
+            strcpy(username, argv[2]);
+
+            char path[100];
+            sprintf(path, "data/%s", username);
+
+            printf("\nLogin successful! \n\t Welcome, %s.\n", username);
+            pauseScreen();
+            clearScreen();
+
+            return 1;
+        }
+    }
+
+    fclose(fp);
+    printf("Invalid credentials!\n");
+    printf("Please re-check your credentials.\n");
+    exit(0);
 }

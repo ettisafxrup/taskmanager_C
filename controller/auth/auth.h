@@ -3,5 +3,6 @@
 
 int loginUser(char *username);
 void registerUser();
+int argsLogin(char *argv[]);
 
 #endif
