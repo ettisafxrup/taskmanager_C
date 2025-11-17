@@ -8,13 +8,13 @@
 #include "auth.h"
 #include "../../utils/utils.h"
 
-#define USERS_FILE "data/users.txt"
+#define USERS_FILE "data/users.dat"
 
 int loginUser(char username[])
 {
     char inputUser[50], inputPass[50];
     char storedUser[50], storedPass[50];
-    FILE *fp = fopen(USERS_FILE, "r");
+    FILE *fp = fopen(USERS_FILE, "rb");
 
     if (fp == NULL)
     {
@@ -57,7 +57,7 @@ int loginUser(char username[])
 void registerUser()
 {
     char username[50], password[50];
-    FILE *fp = fopen(USERS_FILE, "a+");
+    FILE *fp = fopen(USERS_FILE, "ab+");
 
     printf("\nUsername >> ");
     scanf("%s", username);

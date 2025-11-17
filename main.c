@@ -8,9 +8,9 @@
 
 enum
 {
-    LOGIN = 1,
+    EXIT = 0,
+    LOGIN,
     REGISTER,
-    EXIT
 };
 
 void mainMenu(const char *username);
@@ -19,7 +19,6 @@ int main(int argc, int *argv[])
 {
 
     int choice;
-    // username using malloc pls
     char *username = malloc(50);
 
     while (1)
@@ -34,7 +33,7 @@ int main(int argc, int *argv[])
         printf(">> 2407093 2407101 2407109 <<\n\n");
         printf("\t1. Login\n");
         printf("\t2. Register\n");
-        printf("\t3. Exit\n\n");
+        printf("\t0. Exit\n\n");
 
         printf("\t>> ");
         scanf("%d", &choice);
@@ -71,9 +70,8 @@ void mainMenu(const char *username)
     {
         clearScreen();
         printf("===== Welcome, %s =====\n\n", username);
-        printf("\t1. To-Do Task Manager\n");
-        printf("\t2. Bank Balance\n");
-        printf("\t3. Logout\n\n");
+        printf("\t1. Open Taskie Manager\n");
+        printf("\t0. Logout\n\n");
 
         printf(">> ");
         scanf("%d", &choice);
@@ -84,11 +82,7 @@ void mainMenu(const char *username)
         case 1:
             showTodoMenu(username);
             break;
-        case 2:
-            printf("Bank Balance!\n");
-            pauseScreen();
-            break;
-        case 3:
+        case 0:
             clearScreen();
             printf("\t Logged out successfully!\n");
             pauseScreen();
