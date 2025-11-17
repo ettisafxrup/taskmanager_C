@@ -80,7 +80,7 @@ int argsLogin(char *argv[])
 {
     char storedUser[50], storedPass[50];
     char username[50];
-    FILE *fp = fopen("data/users.txt", "r");
+    FILE *fp = fopen("data/users.dat", "rb");
 
     while (fscanf(fp, "%s %s", storedUser, storedPass) != EOF)
     {

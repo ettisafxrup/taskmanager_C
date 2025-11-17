@@ -7,11 +7,11 @@
 
 enum
 {
-    ADD_TASK = 1,
+    EXIT_TO_MAIN_MENU = 0,
+    ADD_TASK,
     EDIT_TASK,
     MARK_TASK_COMPLETED,
     DELETE_TASK,
-    EXIT_TO_MAIN_MENU
 };
 
 void taskFilePath(const char *username, char *path)
@@ -237,7 +237,7 @@ void showTodoMenu(const char *username)
         printf("\t2. Edit Task\n");
         printf("\t3. Mark Task as Completed\n");
         printf("\t4. Delete Task\n");
-        printf("\t5. Exit to Main Menu\n\n");
+        printf("\t0. Exit to Main Menu\n\n");
         printf("======================\n");
         printf("\t>> ");
         scanf("%d", &choice);
